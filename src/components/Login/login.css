@@ -1,0 +1,35 @@
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#two{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 14px #1A1A1A1A;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    align-items: center;
+    justify-items: center;
+    border: none;
+}
+#sign{
+    color: rgb(11, 145, 212);
+}
+#account{
+  font-size:smaller;
+}
+.space{
+    margin: 1rem;
+
+}
+.btn{
+    margin: 1rem;
+    width:5rem;
+    padding: .75rem;
+    background-color: #fd7e14;
+    color: white;
+    font-weight: bolder;
+}
