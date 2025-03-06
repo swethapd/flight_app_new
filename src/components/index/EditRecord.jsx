@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router";
+import './EditRecord.css'
 
 const EditRecord = () => {
   const { id } = useParams(); // Get the record ID from URL params
@@ -93,11 +94,14 @@ const EditRecord = () => {
   };
 
   return (
-    <div>
-      <h2>Edit Record</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="editDetails">
+      <div className="edit-record-container">
+      <h2 id="edit-record-header">Edit Record</h2>
+      <form id="edit-record-form" onSubmit={handleSubmit}>
+        <div className="form-group">
           <input
+            id="origin"
+            className="form-input"
             placeholder="Origin"
             type="text"
             name="origin"
@@ -106,8 +110,10 @@ const EditRecord = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <input
+            id="destination"
+            className="form-input"
             placeholder="Destination"
             type="text"
             name="destination"
@@ -116,8 +122,10 @@ const EditRecord = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <input
+            id="date"
+            className="form-input"
             placeholder="Date"
             type="date"
             name="date"
@@ -129,10 +137,12 @@ const EditRecord = () => {
 
         {/* Render passenger details inputs */}
         {passengerDetails.map((passenger, index) => (
-          <div key={index}>
-            <div>
+          <div key={index} className="passenger-details-group">
+            <div className="form-group">
               <input
-                placeholder="FirsrName"
+                id={`firstName-${index}`}
+                className="form-input"
+                placeholder="First Name"
                 type="text"
                 name="firstName"
                 value={passenger.firstName || ""}
@@ -140,9 +150,11 @@ const EditRecord = () => {
                 required
               />
             </div>
-            <div>
+            <div className="form-group">
               <input
-                placeholder="Lastname"
+                id={`lastName-${index}`}
+                className="form-input"
+                placeholder="Last Name"
                 type="text"
                 name="lastName"
                 value={passenger.lastName || ""}
@@ -150,9 +162,11 @@ const EditRecord = () => {
                 required
               />
             </div>
-            <div>
+            <div className="form-group">
               <input
-                placeholder="age"
+                id={`age-${index}`}
+                className="form-input"
+                placeholder="Age"
                 type="number"
                 name="age"
                 value={passenger.age || ""}
@@ -160,9 +174,10 @@ const EditRecord = () => {
                 required
               />
             </div>
-            <div>
+            <div className="form-group">
               <select
-                placeholder="gender"
+                id={`gender-${index}`}
+                className="form-select"
                 name="gender"
                 value={passenger.gender || ""}
                 onChange={(e) => handlePassengerChange(index, e)}
@@ -177,10 +192,13 @@ const EditRecord = () => {
           </div>
         ))}
 
-        <div>
-          <button type="submit">Save Changes</button>
+        <div className="form-group">
+          <button id="save-changes-btn" type="submit" className="form-btn">
+            Save Changes
+          </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

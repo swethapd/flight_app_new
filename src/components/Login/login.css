@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 91.4vh;
+    /* background-image: url(../Login/images/login.jpg); */
 }
 #two{
     background: #FFFFFF 0% 0% no-repeat padding-box;

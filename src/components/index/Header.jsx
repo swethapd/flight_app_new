@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./home.css";
+import "./Header.css";
 import SearchForm from "./SearchForm";
 import { useNavigate } from "react-router";
 
@@ -32,7 +32,7 @@ const Header = () => {
           alt="logo"
         />
         {
-          localStorage.getItem('username') &&           <div className="flex">
+          localStorage.getItem('username') &&  <div className="flex">
             
           <p id='logo'>{usernameFirstLetter}</p> 
           <button onClick={handleLogout} id="headerbutton">

@@ -104,3 +104,80 @@
   padding-bottom: 1.5rem;
   color: #646464;
 }
+
+
+
+/* Passenger Details Form */
+.passenger-details-form {
+  background-color: #f9f9f9;
+  width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#passenger-details-header {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.passenger-card {
+  background-color: #e8f5e9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.passenger-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.passenger-info {
+  display: flex;
+  flex-wrap: wrap; /* Allows input fields to wrap to the next line if space is constrained */
+  gap: 15px; /* Provides spacing between fields */
+  justify-content: space-between; /* Ensures the fields are spaced out horizontally */
+}
+
+.input-field {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 23%; /* Adjust width to fit multiple input fields in a row */
+  min-width: 120px;
+}
+
+.input-field:focus {
+  outline-color: #4d90fe;
+}
+
+#submit-passenger-details {
+  padding: 12px 25px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#submit-passenger-details:hover {
+  background-color: #45a049;
+}
+
+#flight-form{
+  background-color: white;
+  width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

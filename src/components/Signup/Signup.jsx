@@ -58,7 +58,7 @@ const Signup = () => {
 
     // Submit form data if validation passes
     try {
-      const response = await axios.post('http://localhost/my_project/php/create.php', {
+      const response = await axios.post('http://localhost/my_project/php/signUp.php', {
         username,
         email,
         password,

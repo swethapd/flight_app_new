@@ -28,7 +28,7 @@ const Login = () => {
     // Sending login request
     try {
       const response = await axios.post(
-        "http://localhost/my_project/php/read.php",
+        "http://localhost/my_project/php/login.php",
         {
           username,
           password,
@@ -57,6 +57,7 @@ const Login = () => {
     }
   },[])
   return (
+    <>
     <div className="parent">
       <form id="two" onSubmit={handleSubmit}>
         <h2 id="sign">Login</h2>
@@ -87,6 +88,7 @@ const Login = () => {
         </p>
       </form>
     </div>
+    </>
   );
 };
 
