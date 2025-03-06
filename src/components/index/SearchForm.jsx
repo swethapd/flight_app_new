@@ -43,7 +43,8 @@ const SearchForm = () => {
     console.log(updatedPassengers);
   };
  
-  const handlePassengerClick = async () => {
+  const handlePassengerClick = async (e) => {
+    e.preventDefault()
     const finalObj = {
       ...formData,
       passengerDetails,
@@ -62,7 +63,7 @@ const SearchForm = () => {
             }
         );
         console.log("Response", response.data);
-        navigate("/header");
+
     } catch (error) {
         console.error("Error:", error);
     }
@@ -120,7 +121,7 @@ const SearchForm = () => {
       </div>
  
       {passengerDetails.length > 0 && (
-        <div id="passengerdetails">
+        <form id="passengerdetails" onSubmit={handlePassengerClick}>
           <h2 id="passengerdetailstext">Passenger Details</h2>
           <br />
           {passengerDetails.map((passenger, index) => (
@@ -169,10 +170,10 @@ const SearchForm = () => {
               </select>
             </div>
           ))}
-          <button type="submit" className="btn1" onClick={handlePassengerClick}>
+          <button type="submit" className="btn1">
             Submit
           </button>
-        </div>
+        </form>
       )}
     </>
   );

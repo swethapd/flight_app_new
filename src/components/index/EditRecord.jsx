@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router";
 
 const EditRecord = () => {
-  const { id } = useParams();  // Get the record ID from URL params
+  const { id } = useParams(); // Get the record ID from URL params
   const navigate = useNavigate();
 
   // State for form data, initialize with empty strings or other default values
@@ -20,11 +20,16 @@ const EditRecord = () => {
   useEffect(() => {
     const fetchRecord = async () => {
       try {
-        // Fetch the record data by ID
-        const response = await axios.get(`http://localhost/my_project/php/getRecordById.php?id=${id}`);
+        // Fetch the record by ID
+        const response = await axios.get(
+          `http://localhost/my_project/php/getRecordById.php?id=${id}`
+        );
         const data = response.data;
 
+        console.log("Fetched Record:", data); // Check the response structure
+
         if (data) {
+          // Set the main record form data
           setFormData({
             origin: data.origin || "",
             destination: data.destination || "",
@@ -32,15 +37,10 @@ const EditRecord = () => {
             passengerCount: data.passengerCount || 1,
           });
 
-          // Assuming `data.passengerDetails` is an array of passengers, map through them
-          const passengers = data.passengerDetails || [];
-          setPassengerDetails(passengers.map(passenger => ({
-            id: passenger.id,  // Assuming passenger data has unique IDs
-            firstName: passenger.firstName || "",
-            lastName: passenger.lastName || "",
-            age: passenger.age || "",
-            gender: passenger.gender || "",
-          })));
+          // Set the passenger details
+          if (data.passengerDetails && Array.isArray(data.passengerDetails)) {
+            setPassengerDetails(data.passengerDetails);
+          }
         }
       } catch (error) {
         console.error("Error fetching record data:", error);
@@ -73,14 +73,17 @@ const EditRecord = () => {
 
     try {
       // Send the updated data to the backend
-      const response = await axios.put("http://localhost/my_project/php/editRecord.php", {
-        id,  // Include the ID of the record being edited
-        ...formData,  // Spread the form data
-        passengerDetails,  // Include the updated passenger details
-      });
+      const response = await axios.put(
+        "http://localhost/my_project/php/editRecord.php",
+        {
+          id, // Include the ID of the record being edited
+          ...formData, // Spread the form data
+          passengerDetails, // Include the updated passenger details
+        }
+      );
 
       if (response.data.status === "success") {
-        navigate("/RecordList");  // Navigate to the record list after saving changes
+        navigate("/RecordList"); // Navigate to the record list after saving changes
       } else {
         console.error("Error updating record:", response.data.message);
       }
@@ -94,8 +97,8 @@ const EditRecord = () => {
       <h2>Edit Record</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Origin</label>
           <input
+            placeholder="Origin"
             type="text"
             name="origin"
             value={formData.origin || ""}
@@ -104,8 +107,8 @@ const EditRecord = () => {
           />
         </div>
         <div>
-          <label>Destination</label>
           <input
+            placeholder="Destination"
             type="text"
             name="destination"
             value={formData.destination || ""}
@@ -114,8 +117,8 @@ const EditRecord = () => {
           />
         </div>
         <div>
-          <label>Date</label>
           <input
+            placeholder="Date"
             type="date"
             name="date"
             value={formData.date || ""}
@@ -127,10 +130,9 @@ const EditRecord = () => {
         {/* Render passenger details inputs */}
         {passengerDetails.map((passenger, index) => (
           <div key={index}>
-            <h3>Passenger {index + 1}</h3>
             <div>
-              <label>First Name</label>
               <input
+                placeholder="FirsrName"
                 type="text"
                 name="firstName"
                 value={passenger.firstName || ""}
@@ -139,8 +141,8 @@ const EditRecord = () => {
               />
             </div>
             <div>
-              <label>Last Name</label>
               <input
+                placeholder="Lastname"
                 type="text"
                 name="lastName"
                 value={passenger.lastName || ""}
@@ -149,8 +151,8 @@ const EditRecord = () => {
               />
             </div>
             <div>
-              <label>Age</label>
               <input
+                placeholder="age"
                 type="number"
                 name="age"
                 value={passenger.age || ""}
@@ -159,8 +161,8 @@ const EditRecord = () => {
               />
             </div>
             <div>
-              <label>Gender</label>
               <select
+                placeholder="gender"
                 name="gender"
                 value={passenger.gender || ""}
                 onChange={(e) => handlePassengerChange(index, e)}

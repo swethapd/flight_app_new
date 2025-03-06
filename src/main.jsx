@@ -11,17 +11,16 @@ import RecordList from './components/index/RecordList.jsx'
 import EditRecord from './components/index/EditRecord.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/header" element={<Header />} />
-        <Route path="/searchform" element={<SearchForm/>}/>
-        <Route path="/RecordList" element={<RecordList/>} />
-        <Route path="/edit/:id" element={<EditRecord/>} /> {/* This is the dynamic route */}
-      </Routes>
-    </BrowserRouter>
-  </StrictMode>,
+  <BrowserRouter>
+  <Header />
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/header" element={<Header />} />
+      <Route path="/searchform" element={<SearchForm/>}/>
+      <Route path="/RecordList" element={<RecordList/>} />
+      <Route path="/edit/:id" element={<EditRecord/>} /> {/* This is the dynamic route */}
+    </Routes>
+  </BrowserRouter>
 )

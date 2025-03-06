@@ -64,7 +64,7 @@ const Signup = () => {
         password,
       });
       console.log('Response:', response.data);
-      navigate('/header'); // Redirect on successful form submission
+      navigate('/login'); // Redirect on successful form submission
     } catch (error) {
       console.error('Error during form submission:', error);
     }

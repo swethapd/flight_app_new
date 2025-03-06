@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import './RecordList.css';
 
-
 const RecordList = () => {
   const [records, setRecords] = useState([]);
   const navigate = useNavigate();
@@ -21,11 +20,12 @@ const RecordList = () => {
 
     fetchRecords();
   }, []);
+  // console.log(records)
 
   // Handle editing a record
   const handleEdit = (id) => {
-    console.log(id)
-    navigate(`/edit/${id}`);  // Navigate to the edit page with the record ID (corrected)
+    console.log(id);
+    navigate(`/edit/${id}`);  // Navigate to the edit page with the record ID
   };
 
   // Handle deleting a record
@@ -45,7 +45,7 @@ const RecordList = () => {
 
   return (
     <div>
-      <h2>Flight and Passenger Records</h2>
+      <h2 className="heading">Flight and Passenger Records</h2>
       <table border={1}>
         <thead>
           <tr>
@@ -71,14 +71,14 @@ const RecordList = () => {
                 <td>{record.age}</td>
                 <td>{record.gender}</td>
                 <td>
-                  <button onClick={() => handleEdit(record.id)}>Edit</button>
-                  <button onClick={() => handleDelete(record.id)}>Delete</button>
+                  <button onClick={() => handleEdit(record.id)} id="editing">Edit</button>
+                  <button onClick={() => handleDelete(record.id)} id="deleting">Delete</button>
                 </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="9">No records found.</td>
+              <td colSpan="8">No records found.</td>
             </tr>
           )}
         </tbody>

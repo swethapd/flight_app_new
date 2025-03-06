@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import "./login.css";
@@ -39,8 +39,8 @@ const Login = () => {
 
       // Check response for success status
       if (response.data.status === "success") {
-        // localStorage.setItem('username', username);
-        navigate("/header");
+        localStorage.setItem('username', username);
+        navigate("/");
       } else {
         setError("Invalid Username or Password.");
       }
@@ -51,6 +51,11 @@ const Login = () => {
   };
   // localStorage.setItem('FirstName', 'Swetha')
 
+  useEffect(() => {
+    if(localStorage.getItem('username')){
+      navigate("/");
+    }
+  },[])
   return (
     <div className="parent">
       <form id="two" onSubmit={handleSubmit}>
@@ -63,7 +68,7 @@ const Login = () => {
           onChange={(e) => setUsername(e.target.value)}
         ></input>
         <input
-          type="text"
+          type="password"
           placeholder="Enter Password"
           className="space"
           value={password}
