@@ -10,7 +10,7 @@ function App() {
 
 
   useEffect(() => {
-    if(!localStorage.getItem('username')){
+    if(!localStorage.getItem('mailId')){
       navigate("/login");
     }
   },[])

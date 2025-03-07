@@ -6,12 +6,22 @@ import './RecordList.css';
 const RecordList = () => {
   const [records, setRecords] = useState([]);
   const navigate = useNavigate();
+  const mailId = localStorage.getItem("mailId");  // Set the mailId for which you want to fetch the records
 
-  // Fetch records on component mount
+
+  // const [mailId,setMailId]=useState([]);  // Set the mailId for which you want to fetch the records
+
+
+  // const storedmailId = localStorage.getItem("mailId"); // Retrieve username from localStorage
+  // if (storedmailId) {
+  //   setMailId(storedstoredmailIdUsername); // Set the username state
+  // }
+
+  // Fetch records based on mailId on component mount
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const response = await axios.get("http://localhost/my_project/php/getRecords.php");
+        const response = await axios.get(`http://localhost/my_project/php/getRecords.php?mailId=${mailId}`);
         setRecords(response.data);  // Set the records in the state
       } catch (error) {
         console.error("Error fetching records:", error);
@@ -19,8 +29,7 @@ const RecordList = () => {
     };
 
     fetchRecords();
-  }, []);
-  // console.log(records)
+  }, [mailId]);
 
   // Handle editing a record
   const handleEdit = (id) => {
@@ -43,6 +52,16 @@ const RecordList = () => {
     }
   };
 
+  // Group records by origin, destination, date, and created_time
+  const groupedRecords = records.reduce((acc, record) => {
+    const groupKey = `${record.origin}-${record.destination}-${record.traveldate}-${record.created_time}`;
+    if (!acc[groupKey]) {
+      acc[groupKey] = [];
+    }
+    acc[groupKey].push(record);
+    return acc;
+  }, {});
+
   return (
     <div>
       <h2 className="heading">Flight and Passenger Records</h2>
@@ -60,12 +79,19 @@ const RecordList = () => {
           </tr>
         </thead>
         <tbody>
-          {records.length > 0 ? (
-            records.map((record) => (
+          {Object.keys(groupedRecords).map((groupKey) => {
+            const group = groupedRecords[groupKey];
+            const firstRecord = group[0]; // Get the first record to display the group header (origin, destination, etc.)
+
+            return group.map((record, index) => (
               <tr key={record.id}>
-                <td>{record.origin}</td>
-                <td>{record.destination}</td>
-                <td>{record.traveldate}</td>
+                {index === 0 && (
+                  <>
+                    <td rowSpan={group.length}>{firstRecord.origin}</td>
+                    <td rowSpan={group.length}>{firstRecord.destination}</td>
+                    <td rowSpan={group.length}>{firstRecord.traveldate}</td>
+                  </>
+                )}
                 <td>{record.firstName}</td>
                 <td>{record.lastName}</td>
                 <td>{record.age}</td>
@@ -75,12 +101,8 @@ const RecordList = () => {
                   <button onClick={() => handleDelete(record.id)} id="deleting">Delete</button>
                 </td>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="8">No records found.</td>
-            </tr>
-          )}
+            ));
+          })}
         </tbody>
       </table>
     </div>

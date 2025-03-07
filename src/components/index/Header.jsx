@@ -7,34 +7,33 @@ const Header = () => {
   let navigate = useNavigate();
 
   // Retrieve the user's first name from localStorage
-  const firstName = localStorage.getItem('username');
+  const firstName = localStorage.getItem('mailId');
   console.log(firstName)
 
-  // const [username, setUsername] = useState(""); // state to hold the username
+  // const [mailId, setmailId] = useState(""); // state to hold the mailId
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem("username"); // Retrieve username from localStorage
-    // if (storedUsername) {
-    //   setUsername(storedUsername); // Set the username state
+    const storedmailId = localStorage.getItem("mailId"); // Retrieve mailId from localStorage
+    // if (storedmailId) {
+    //   setmailId(storedmailId); // Set the mailId state
     // }
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("username"); // Optional: Remove the first name on logout
+    localStorage.removeItem("mailId"); // Optional: Remove the first name on logout
     navigate("/login");
   };
-  const usernameFirstLetter = firstName ? firstName.charAt(0).toUpperCase() : "";
+  const mailIdFirstLetter = firstName ? firstName.charAt(0).toUpperCase() : "";
   return (
     <>
       <header className="flex">
-        <img
-          src="https://i.pinimg.com/474x/51/9d/ef/519deff8ef33ab663eaa22bad6b12926.jpg"
-          alt="logo"
+        <img 
+          src="https://d12lchh0gjjhot.cloudfront.net/qa/uploadFiles/portalLogo/414_1729072841_portal_logo.svg" height="50px" width="200px" alt="imagelogo"
         />
         {
-          localStorage.getItem('username') &&  <div className="flex">
+          localStorage.getItem('mailId') &&  <div className="flex">
             
-          <p id='logo'>{usernameFirstLetter}</p> 
+          <p id='logo'>{mailIdFirstLetter}</p> 
           <button onClick={handleLogout} id="headerbutton">
             Logout
           </button>

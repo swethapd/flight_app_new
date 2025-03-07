@@ -5,6 +5,17 @@
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
+  /* .backImage{
+    background-image: url(./images/flight3.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    top:0%;
+    left:0%;
+    z-index:-1;
+    position: fixed;
+    background-repeat: repeat-y;
+  } */
   header{
     background-color: rgba(245, 245, 245, 0.712);
     justify-content: space-between;
@@ -35,10 +46,10 @@
     color: white;
     border: none;
   }
-  header img{
+  /* header img{
     width: 4rem;
     border-radius: .5rem;
-  }
+  } */
   header div{
     align-items: center;
   }
@@ -77,7 +88,6 @@
   
   .body{
     align-items: center;
-    height: 10vh;
     justify-content: center;
     gap: 2rem;
   }
@@ -103,33 +113,18 @@
   font-size: 2rem;
   padding-bottom: 1.5rem;
   color: #646464;
+
+}
+#passenger-details-form{
+  width: 50%;
+  
 }
 
-
-
-/* Passenger Details Form */
-.passenger-details-form {
-  background-color: #f9f9f9;
-  width: 80%;
-  margin: 30px auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#passenger-details-header {
+ #passenger-details-header {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
-}
-
-.passenger-card {
-  background-color: #e8f5e9;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .passenger-title {
@@ -174,10 +169,19 @@
 }
 
 #flight-form{
-  background-color: white;
+  /* padding-top:4rem; */
   width: 80%;
   margin: 30px auto;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+
+.mainSearchForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .list-container{
+  margin-top: 4rem;
+} */

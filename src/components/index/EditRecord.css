@@ -1,84 +1,108 @@
-/* Edit Record Page Styles */
-.edit-record-container {
-  width: 30%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
-}
-.editDetails{
+/* General styling for the EditRecord component */
+.editDetails {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  min-height: 90vh;
+  background-color: #f4f4f4; /* Light gray background */
+}
+
+.edit-record-container {
+  width: 50%;
+  max-width: 600px;
+  padding: 30px;
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slight shadow for a card-like effect */
+  border: 1px solid #ddd;
 }
 
 #edit-record-header {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-#edit-record-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  font-size: 26px;
+  margin-bottom: 30px;
+  color: #333;
 }
 
 .form-group {
+  margin-bottom: 20px;
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
   justify-content: center;
-  align-items:center;
 }
 
-.form-input {
-  padding: 10px;
+.form-input,
+.form-select {
+  width: 60%;
+  padding: 12px;
+  font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Light background for inputs */
 }
 
-.form-input:focus {
-  outline-color:#ccc;
+.form-input:focus,
+.form-select:focus {
+  border-color: #4CAF50; /* Green border on focus */
+  outline: none;
 }
 
 .form-select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  cursor: pointer;
 }
 
-.form-select:focus {
-  outline-color:#ccc;
-}
-
-.passenger-details-group {
+.form-btn {
+  width: 30%;
   padding: 15px;
-  background-color: #eaf1f9;
-  border-radius: 8px;
-}
-
-#save-changes-btn {
-  padding: 10px;
-  font-size: 1.1rem;
-  background-color: #4caf50;
+  font-size: 18px;
+  background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  width: 10rem;
-  display: flex;
-  justify-content: center;
+  transition: background-color 0.3s ease;
 }
 
-#save-changes-btn:hover {
-  background-color: #45a049;
+.form-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
+
+.form-btn:active {
+  background-color: #3e8e41; /* Even darker green on button click */
+}
+
+input[type="date"] {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+select {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
 
 

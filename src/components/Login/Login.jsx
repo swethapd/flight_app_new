@@ -7,18 +7,18 @@ import { Link, useNavigate } from "react-router";
 const Login = () => {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
+  const [mailId, setMailId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // State to hold error message
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // console.log(username, password);
+    // console.log(mailId, password);
 
     // Simple validation checks
-    if (!username || !password) {
-      setError("Username and Password are required.");
+    if (!mailId || !password) {
+      setError("mailId and Password are required.");
       return;
     }
 
@@ -30,7 +30,7 @@ const Login = () => {
       const response = await axios.post(
         "http://localhost/my_project/php/login.php",
         {
-          username,
+          mailId,
           password,
         }
       );
@@ -39,10 +39,10 @@ const Login = () => {
 
       // Check response for success status
       if (response.data.status === "success") {
-        localStorage.setItem('username', username);
+        localStorage.setItem('mailId', mailId);
         navigate("/");
       } else {
-        setError("Invalid Username or Password.");
+        setError("Invalid mailId or Password.");
       }
     } catch (error) {
       console.log("Error:", error);
@@ -52,7 +52,7 @@ const Login = () => {
   // localStorage.setItem('FirstName', 'Swetha')
 
   useEffect(() => {
-    if(localStorage.getItem('username')){
+    if(localStorage.getItem('mailId')){
       navigate("/");
     }
   },[])
@@ -63,10 +63,10 @@ const Login = () => {
         <h2 id="sign">Login</h2>
         <input
           type="text"
-          placeholder="Enter Username"
+          placeholder="Enter mailId"
           className="space"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={mailId}
+          onChange={(e) => setMailId(e.target.value)}
         ></input>
         <input
           type="password"

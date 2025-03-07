@@ -90,7 +90,7 @@ return (
           value={email} onChange={(e) => setEmail(e.target.value)}></input>
            {errors.email && <p className="error" style={{color: 'red', fontSize:'small'}}>{errors.email}</p>} {/* Display email error */}
 
-        <input type="text" placeholder='Enter Password' className='space'
+        <input type="password" placeholder='Enter Password' className='space'
           value={password} onChange={(e) => setPassword(e.target.value)}></input>
            {errors.password && <p className="error" style={{color: 'red', fontSize:'small'}}>{errors.password}</p>} {/* Display password error */}
 
