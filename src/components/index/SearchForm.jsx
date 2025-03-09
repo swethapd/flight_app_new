@@ -141,13 +141,14 @@ const SearchForm = () => {
                   className="passenger-card"
                   id={`passenger-card-${index}`}
                 >
-                  <h3
+               
+                  <div className="passenger-info">
+                       <h3
                     id={`passenger-title-${index}`}
                     className="passenger-title"
                   >
-                    Passenger {index + 1}
+                    Passenger {index + 1}:
                   </h3>
-                  <div className="passenger-info">
                     <input
                       required
                       type="text"
